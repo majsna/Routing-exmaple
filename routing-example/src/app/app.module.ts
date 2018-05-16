@@ -11,6 +11,9 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {DataBaseService} from "./data-base.service";
 import {CourseDetailComponent} from "./courses/course-detail/course-detail.component";
 import {CoursesListComponent} from "./courses/courses-list/courses-list.component";
+import {TemplateDrivenFormComponent} from "./about/template-driven-form/template-driven-form.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormComponent} from "./about/reactive-form/reactive-form.component";
 
 
 @NgModule({
@@ -21,11 +24,15 @@ import {CoursesListComponent} from "./courses/courses-list/courses-list.componen
     CoursesComponent,
     PageNotFoundComponent,
     CourseDetailComponent,
-    CoursesListComponent
+    CoursesListComponent,
+    TemplateDrivenFormComponent,
+    ReactiveFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [DataBaseService],
   bootstrap: [AppComponent]
