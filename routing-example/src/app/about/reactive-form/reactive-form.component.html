@@ -1,18 +1,32 @@
 <h4>Reactive form</h4>
 
-<form [formGroup]="contactForm">
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
   <div style="display: inline-grid">
     <label for="topic">Topic:</label>
     <input type="text" id="topic" formControlName="topic">
+    <div *ngIf="contactForm.get('topic').invalid && contactForm.get('topic').dirty">Field required</div>
+
 
     <label for="message">Message:</label>
     <textarea rows="4" cols="50" id="message" formControlName="message"></textarea>
+    <div *ngIf="contactForm.get('message').invalid && contactForm.get('message').dirty">Field required</div>
+    <div *ngIf="contactForm.get('message').errors && contactForm.get('message').errors.minlength">Message is to short
+    </div>
+
 
     <label for="name">Name:</label>
     <input type="text" id="name" formControlName="name">
+    <div *ngIf="contactForm.get('name').invalid && contactForm.get('name').dirty">Field required</div>
+
 
     <label for="email">E-mail:</label>
     <input type="email" id="email" formControlName="email">
+    <div *ngIf="contactForm.get('email').invalid && contactForm.get('email').dirty">Field required</div>
+    <div
+      *ngIf="contactForm.get('email').errors && contactForm.get('email').errors.email && contactForm.get('email').dirty">
+      Wrong email format.
+    </div>
+
 
     <label for="course">Which course is the best?</label>
     <select id="course" formControlName="course">
@@ -21,11 +35,21 @@
 
     <div>
       <label for="bot">Are you a bot?</label>
-      <input type="radio" id="bot" formControlName="bot">Yes
-      <input type="radio" id="bot" formControlName="bot">No
+      <input type="radio" id="bot" [value]="true" formControlName="bot">Yes
+      <input type="radio" id="bot1" [value]="false" formControlName="bot">No
     </div>
 
-    <button type="submit">Send</button>
-    <button type="reset" (click)="reset()">Reset</button>
+    <label>What would you like to learn?</label>
+    <div formArrayName="questions" style="margin: 5px">
+      <div *ngFor="let q of contactForm.get('questions')['controls']; let i = index">
+        {{i + 1}}.
+        <input type="text" [formControlName]="i" style="margin: 5px">
+      </div>
+      <div *ngIf="contactForm.get('questions').errors && contactForm.get('questions').errors['forbiddenCourse']">Wrong</div>
+      <button type="button" (click)="addQuestion()">Add</button>
+    </div>
+
+    <button type="submit" [disabled]="contactForm.invalid">Send</button>
+    <button type="button" (click)="onReset()">Reset</button>
   </div>
 </form>
