@@ -14,7 +14,19 @@ import {CoursesListComponent} from "./courses/courses-list/courses-list.componen
 import {TemplateDrivenFormComponent} from "./about/template-driven-form/template-driven-form.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ReactiveFormComponent} from "./about/reactive-form/reactive-form.component";
+import {AngularFireModule} from "angularfire2";
+import {AngularFireAuthModule} from "angularfire2/auth";
+import {LoginComponent} from "./auth/login/login.component";
+import {AuthService} from "./auth/auth.service";
 
+const config = {
+  apiKey: "AIzaSyBT1TV_SRNkVROrIbIJ-AUh84BtVSv-WCg",
+  authDomain: "auth-a9d3c.firebaseapp.com",
+  databaseURL: "https://auth-a9d3c.firebaseio.com",
+  projectId: "auth-a9d3c",
+  storageBucket: "auth-a9d3c.appspot.com",
+  messagingSenderId: "1063261811464"
+};
 
 @NgModule({
   declarations: [
@@ -26,15 +38,18 @@ import {ReactiveFormComponent} from "./about/reactive-form/reactive-form.compone
     CourseDetailComponent,
     CoursesListComponent,
     TemplateDrivenFormComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(config),
+    AngularFireAuthModule
   ],
-  providers: [DataBaseService],
+  providers: [DataBaseService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

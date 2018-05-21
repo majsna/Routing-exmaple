@@ -6,6 +6,7 @@ import {AboutComponent} from "./about/about.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {CourseDetailComponent} from "./courses/course-detail/course-detail.component";
 import {CoursesListComponent} from "./courses/courses-list/courses-list.component";
+import {LoginComponent} from "./auth/login/login.component";
 
 const appRoutes: Routes = [
   {
@@ -34,6 +35,10 @@ const appRoutes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '**',
