@@ -1,12 +1,12 @@
 <h1>Routing w Angularze</h1>
 
 <nav>
-  <a routerLink="/home" routerLinkActive="active">Home</a>
-  <a routerLink="/courses" routerLinkActive="active">Courses</a>
-  <a routerLink="/about" routerLinkActive="active">About</a>
-  <a routerLink="/secret" routerLinkActive="active">Secret</a>
-  <a *ngIf="!authService.user" routerLink="/login" routerLinkActive="active">Log in</a>
-  <button *ngIf="authService.user" (click)="logout()">Log out</button>
+  <a routerLink="/home" routerLinkActive="active" class="btn btn-light">Home</a>
+  <a routerLink="/courses" routerLinkActive="active" class="btn btn-light">Courses</a>
+  <a routerLink="/about" routerLinkActive="active" class="btn btn-light">About</a>
+  <a routerLink="/secret" routerLinkActive="active" class="btn btn-light">Secret</a>
+  <a *ngIf="!authService.user" routerLink="/login" routerLinkActive="active" class="btn btn-info">Log in</a>
+  <button *ngIf="authService.user" (click)="logout()" class="btn btn-info">Log out</button>
   <span *ngIf="authService.user">Hi: {{authService.user.email}}</span>
 </nav>
 <router-outlet></router-outlet>
