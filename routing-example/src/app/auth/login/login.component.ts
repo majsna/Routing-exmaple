@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../auth.service";
 import {NgForm} from "@angular/forms";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,19 @@ import {NgForm} from "@angular/forms";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  info: string;
+
+  constructor(private authService: AuthService,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      if(params['name']){
+        this.info = 'Log in into: ' + params['name'];
+      }else{
+        this.info = null;
+      }
+    });
   }
 
   login(formData: NgForm){

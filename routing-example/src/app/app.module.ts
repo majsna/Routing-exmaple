@@ -18,6 +18,10 @@ import {AngularFireModule} from "angularfire2";
 import {AngularFireAuthModule} from "angularfire2/auth";
 import {LoginComponent} from "./auth/login/login.component";
 import {AuthService} from "./auth/auth.service";
+import {SecretComponent} from "./secret/secret.component";
+import {AuthGuardsService} from "./auth/auth-guards.service";
+import {Level1Component} from "./secret/level1/level1.component";
+import {Level2Component} from "./secret/level2/level2.component";
 
 const config = {
   apiKey: "AIzaSyBT1TV_SRNkVROrIbIJ-AUh84BtVSv-WCg",
@@ -39,7 +43,10 @@ const config = {
     CoursesListComponent,
     TemplateDrivenFormComponent,
     ReactiveFormComponent,
-    LoginComponent
+    LoginComponent,
+    SecretComponent,
+    Level1Component,
+    Level2Component
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,7 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule
   ],
-  providers: [DataBaseService, AuthService],
+  providers: [DataBaseService, AuthService, AuthGuardsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

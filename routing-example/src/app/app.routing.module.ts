@@ -7,6 +7,10 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {CourseDetailComponent} from "./courses/course-detail/course-detail.component";
 import {CoursesListComponent} from "./courses/courses-list/courses-list.component";
 import {LoginComponent} from "./auth/login/login.component";
+import {SecretComponent} from "./secret/secret.component";
+import {AuthGuardsService} from "./auth/auth-guards.service";
+import {Level1Component} from "./secret/level1/level1.component";
+import {Level2Component} from "./secret/level2/level2.component";
 
 const appRoutes: Routes = [
   {
@@ -39,6 +43,22 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'secret',
+    component: SecretComponent,
+    // canActivate: [AuthGuardsService],
+    canActivateChild: [AuthGuardsService],
+    children: [
+      {
+      path: 'level1',
+        component: Level1Component
+      },
+      {
+        path: 'level2',
+        component: Level2Component
+      }
+    ]
   },
   {
     path: '**',
