@@ -10,7 +10,7 @@ import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {DataBaseService} from "./data-base.service";
 import {CourseDetailComponent} from "./courses/course-detail/course-detail.component";
 import {CoursesListComponent} from "./courses/courses-list/courses-list.component";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
 import {AngularFireModule} from "angularfire2";
 import {AngularFireAuthModule} from "angularfire2/auth";
 import {LoginComponent} from "./auth/login/login.component";
@@ -45,11 +45,11 @@ const config = {
   ],
   imports: [
     BrowserModule,
+    AboutModule,
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule,
-    AboutModule
+    AngularFireAuthModule
   ],
   providers: [DataBaseService, AuthService, AuthGuardsService],
   bootstrap: [AppComponent]
