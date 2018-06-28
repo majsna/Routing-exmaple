@@ -10,6 +10,8 @@ import {SecretComponent} from "./secret/secret.component";
 import {AuthGuardsService} from "./auth/auth-guards.service";
 import {Level1Component} from "./secret/level1/level1.component";
 import {Level2Component} from "./secret/level2/level2.component";
+import {AboutModule} from "./about/about.module";
+import {CoursesModule} from "./courses/courses.module";
 
 const appRoutes: Routes = [
   {
@@ -21,20 +23,7 @@ const appRoutes: Routes = [
     path: 'home',
     component: HomeComponent
   },
-  {
-    path: 'courses',
-    component: CoursesComponent,
-    children: [
-      {
-        path: '',
-        component: CoursesListComponent
-      },
-      {
-        path: ':id',
-        component: CourseDetailComponent
-      }
-    ]
-  },
+
   {
     path: 'login',
     component: LoginComponent
@@ -62,7 +51,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [AboutModule, CoursesModule, RouterModule.forRoot(appRoutes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {
