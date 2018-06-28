@@ -20,6 +20,7 @@ import {AuthGuardsService} from "./auth/auth-guards.service";
 import {Level1Component} from "./secret/level1/level1.component";
 import {Level2Component} from "./secret/level2/level2.component";
 import {AboutModule} from "./about/about.module";
+import {SharedModule} from "./shared/shared.module";
 
 const config = {
   apiKey: "AIzaSyBT1TV_SRNkVROrIbIJ-AUh84BtVSv-WCg",
@@ -49,7 +50,8 @@ const config = {
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    SharedModule
   ],
   providers: [DataBaseService, AuthService, AuthGuardsService],
   bootstrap: [AppComponent]

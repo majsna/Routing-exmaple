@@ -1,8 +1,9 @@
 import {NgModule} from "@angular/core";
-import {AboutComponent, TemplateDrivenFormComponent, ReactiveFormComponent} from './index';
+import {AboutComponent, ReactiveFormComponent, TemplateDrivenFormComponent} from './index';
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AboutRoutingModule} from "./about.routing.module";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {AboutRoutingModule} from "./about.routing.module";
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    AboutRoutingModule
+    AboutRoutingModule,
+    SharedModule
   ]
 })
 export class AboutModule {}
