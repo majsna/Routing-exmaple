@@ -20,8 +20,7 @@ export class TemplateDrivenFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(contactForm){
-    console.log(contactForm);
+  onSubmit(){
     console.log(this.message);
     this.reset();
   }
